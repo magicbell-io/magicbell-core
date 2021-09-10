@@ -8,21 +8,22 @@
     "Bilal Budhani <bilal@bilalbudhani.com>",
     "Josue Montano <josue@magicbell.io>"
   ],
-  "main": "dist/index.js",
-  "module": "dist/core.esm.js",
+  "source": "./src/index.ts",
+  "main": "dist/magicbell-core.cjs.js",
+  "module": "dist/magicbell-core.esm.js",
+  "unpkg": "dist/magicbell-core.umd.js",
   "typings": "dist/index.d.ts",
   "sideEffects": false,
   "files": [
     "/dist"
   ],
   "scripts": {
-    "build": "tsdx build",
+    "build": "microbundle",
     "prepare": "yarn build",
-    "start": "tsdx watch",
-    "lint": "tsdx lint --write",
+    "start": "microbundle watch",
     "report-coverage": "codecov",
-    "test": "TZ=America/La_Paz tsdx test --collectCoverage --no-cache",
-    "test:watch": "TZ=America/La_Paz tsdx test --watch",
+    "test": "TZ=America/New_York tsdx test --collectCoverage --no-cache",
+    "test:watch": "TZ=America/New_York tsdx test --watch",
     "console": "ts-node"
   },
   "husky": {
@@ -32,7 +33,7 @@
   },
   "lint-staged": {
     "*.{jsx?,tsx?}": [
-      "tsdx lint ./src --write",
+      "eslint --fix",
       "prettier --write"
     ],
     "*.{md,html,css,scss}": "prettier --write"
@@ -78,6 +79,7 @@
     "humps": "^2.0.1",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
+    "microbundle": "^0.13.3",
     "mitt": "^3.0.0",
     "pluralize": "^8.0.0",
     "tslib": "^2.3.1"
