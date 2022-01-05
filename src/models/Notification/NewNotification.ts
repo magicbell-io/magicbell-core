@@ -17,6 +17,6 @@ export interface NewNotification {
   content?: string;
   action_url?: string;
   recipients: Array<Recipient>;
-  custom_attributes?: Record<string, any>;
+  custom_attributes?: Record<string, unknown>;
   topic?: string;
 }
